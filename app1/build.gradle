@@ -1,0 +1,42 @@
+//应用的plugin名称
+//apply pulgin: 'com.android.application'
+//库的plugin名称
+apply plugin: 'com.android.library'
+
+//android项目的配置信息
+android {
+    compileSdkVersion 23
+    buildToolVersion '23.0.2'
+    //默认配置
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 12
+        versionName "2.0"
+
+    }
+
+    buildTypes {
+
+    }
+    //资源集
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/resources']
+            aidl.srcDirs = ['src/main/aidl']
+            renderscript.srcDirs = ['src/main/rs']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+            jni.srcDirs = ['src/main/jni']
+        }
+        androidTest.setRoot('src/test')
+    }
+}
+
+//项目依赖配置
+dependencies{
+    compile fileTree(dir: 'libs','src/main/jniLibs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.1.1'
+}
